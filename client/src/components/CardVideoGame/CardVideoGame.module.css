@@ -1,0 +1,52 @@
+.CardVideoGame {
+
+    width: 350px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* background-image: url('../assets/card-bg.png'); */
+    background-color: #161316;
+    border-radius: 20px;
+    border: 1px solid rgba(54, 46, 46, 0.185);
+    box-shadow: -3px 5px #89a2bd8f;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 10px;
+}
+
+p {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 10px;
+    color: yellow;
+
+    /* & span {
+                font-weight: bold;
+            } */
+}
+
+.cardGameImg {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    /* object-position: center; */
+}
+
+.cardGameImg:hover {
+    box-shadow: 0px 0px 5px 7px #c4b8a080;
+    cursor: pointer;
+}
+
+.cardGameGenres {
+    font-size: 1.8rem;
+    color: white;
+}

@@ -1,0 +1,10 @@
+.mainContainer {
+    display: flex;
+    background-color: darkturquoise;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: solid 1px black;
+    height: 3rem;
+    text-align: center;
+    padding: 1rem;
+}

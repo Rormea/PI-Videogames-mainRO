@@ -1,0 +1,25 @@
+.container {
+    height: 100vh;
+    background-image: url('../asset/img/FondoLand.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton {
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 200px;
+    font-size: x-large;
+    border-radius: 20px;
+    border: none;
+    transition: background-color .5s;
+}
+
+.boton:hover {
+    background-color: rgb(212, 235, 238);
+    cursor: pointer;
+    color: black
+}

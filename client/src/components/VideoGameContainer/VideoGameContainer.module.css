@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    background: transparent;
+    min-height: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 100px 75px 100px;
+    margin-top: 20px;
+}
