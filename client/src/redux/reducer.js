@@ -1,4 +1,7 @@
-import { GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR, SET_LOADING } from "./actions"
+import {
+    GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
+    SET_LOADING, GET_VIDEOGAMEBYNAME
+} from "./actions"
 
 
 
@@ -21,6 +24,9 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, allVideoGames: action.payload };
 
         case GET_VIDEOGAMEBYID:
+            return { ...state, allVideoGames: action.payload };
+
+        case GET_VIDEOGAMEBYNAME:
             return { ...state, allVideoGames: action.payload };
 
         default:

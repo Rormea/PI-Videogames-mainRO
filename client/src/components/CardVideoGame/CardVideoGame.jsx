@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./CardVideoGame.module.css"
-import unknown from "../assets/unknown-cover.jpg"
+import noImg from "../assets/noImg.jpg"
 
 
 const CardVideoGame = (props) => {
@@ -9,7 +9,7 @@ const CardVideoGame = (props) => {
             <h2>{props.name}</h2>
             <img
                 className={style.cardGameImg}
-                src={props.img || unknown}
+                src={props.img || noImg}
                 alt='game'
             />
             <p>{props.rating ? `Rating: ⭐${props.rating}` : null}</p>
