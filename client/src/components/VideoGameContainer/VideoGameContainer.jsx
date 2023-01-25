@@ -1821,6 +1821,7 @@ const VideoGameContainer = () => {
 
     return (
         <div className={style.container}>
+
             {allVideoGames?.map((vg) => {
                 return <CardVideoGame
                     key={vg.id}

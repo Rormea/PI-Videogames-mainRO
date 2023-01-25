@@ -1,12 +1,13 @@
 import {
     GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
-    SET_LOADING, GET_VIDEOGAMEBYNAME
+    SET_LOADING, GET_VIDEOGAMEBYNAME, GET_GENRES
 } from "./actions"
 
 
 
 const initialState = {
     allVideoGames: [],
+    allGenres: [],
     isLoading: false,
     gamesError: {},
 }
@@ -28,6 +29,9 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_VIDEOGAMEBYNAME:
             return { ...state, allVideoGames: action.payload };
+
+        case GET_GENRES:
+            return { ...state, allGenres: action.payload };
 
         default:
             return { ...state }

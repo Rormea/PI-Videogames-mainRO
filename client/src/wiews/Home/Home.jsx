@@ -1,10 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import React from 'react';
 import VideoGameContainer from "../../components/VideoGameContainer/VideoGameContainer"
+import BtBackHome from '../../components/BtBackHome/BtBackHome'
+import Filters from '../../components/Filters/Filters';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getVideoGames } from '../../redux/actions';
 import style from "./Home.module.css"
+
 
 
 
@@ -14,13 +17,24 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getVideoGames());
-    }, [dispatch])
+    }, [dispatch]);
+
+
 
     return (
         <div className={style.Container}>
-            <h1>"soy el Home"</h1>
+
+
+            <BtBackHome />
+            <br />
+            <Filters />
             <VideoGameContainer />
+
+
         </div>
+
+
+
     );
 };
 
