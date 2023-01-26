@@ -1,7 +1,10 @@
+/* eslint-disable no-const-assign */
 import React from 'react';
 import CardVideoGame from '../CardVideoGame/CardVideoGame';
 import style from "./VideoGameContainer.module.css"
+import Paginated from '../Paginated/Paginated';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 
 
@@ -1817,22 +1820,56 @@ const VideoGameContainer = () => {
     // EL objetibo es remplazar ese arreglo que coloqué a mano por
     // el arr que viene de mi store
 
-    const allVideoGames = useSelector(state => state.allVideoGames)
+
+
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [gamesPerPage] = useState(15);
+    // const indexLastGame = currentPage * gamesPerPage //15
+    // const indexFirstGame = indexLastGame - gamesPerPage //0
+    // const currentGame = allVideoGames.slice(indexFirstGame, indexLastGame)
+
+    // const pagination = (numberPage) => {
+    //     setCurrentPage(numberPage)
+    // };
+
+    const allGames = useSelector(state => state.allVideoGames);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [gamesPerPage] = useState(15);
+    const indexLastGame = currentPage * gamesPerPage //15
+    const indexFirstGame = indexLastGame - gamesPerPage //0
+    const currentGame = allGames.slice(indexFirstGame, indexLastGame)
+
+    const pagination = (numberPage) => {
+        setCurrentPage(numberPage)
+    };
+
 
     return (
-        <div className={style.container}>
+        <div >
 
-            {allVideoGames?.map((vg) => {
-                return <CardVideoGame
-                    key={vg.id}
-                    id={vg.id}
-                    name={vg.name}
-                    genders={vg.genres}
-                    img={vg.background_image}
-                    rating={vg.rating}
 
+            <div>
+                <Paginated
+                    gamesPerPage={gamesPerPage}
+                    allVideoGames={allGames.length}
+                    pagination={pagination}
                 />
-            })}
+            </div>
+
+            <div className={style.containerP}>
+                {currentGame?.map((vg) => {
+                    return <CardVideoGame
+                        key={vg.id}
+                        id={vg.id}
+                        name={vg.name}
+                        genders={vg.genres}
+                        img={vg.background_image}
+                        rating={vg.rating}
+
+                    />
+                })}
+            </div>
+
         </div>
     );
 };

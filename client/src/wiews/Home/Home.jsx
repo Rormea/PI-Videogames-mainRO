@@ -1,7 +1,6 @@
 
 import React from 'react';
 import VideoGameContainer from "../../components/VideoGameContainer/VideoGameContainer"
-import BtBackHome from '../../components/BtBackHome/BtBackHome'
 import Filters from '../../components/Filters/Filters';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -10,8 +9,8 @@ import style from "./Home.module.css"
 
 
 
-
 const Home = () => {
+
 
     const dispatch = useDispatch();
 
@@ -20,15 +19,15 @@ const Home = () => {
     }, [dispatch]);
 
 
-
     return (
         <div className={style.Container}>
 
 
-            <BtBackHome />
-            <br />
             <Filters />
+            <br />
             <VideoGameContainer />
+
+
 
 
         </div>

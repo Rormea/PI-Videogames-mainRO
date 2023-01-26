@@ -7,6 +7,7 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_VIDEOGAMEBYID = "GET_VIDEOGAMEBYID";
 export const GET_VIDEOGAMEBYNAME = "GET_VIDEOGAMEBYNAME";
 export const GET_GENRES = "GET_GENRES";
+export const FILTER_GENRES = "FILTER_GENRES";
 
 
 
@@ -71,6 +72,12 @@ export const getGenres = () => async (dispatch) => {
     }
 };
 
-
+export const filterByGen = (payload) => {
+    console.log(payload)
+    return {
+        type: FILTER_GENRES,
+        payload
+    }
+};
 
 

@@ -1,16 +1,20 @@
-const { Videogame, Gender } = require("../db");
+const { Videogame, Genre } = require("../db");
 
 const createVideoGame = async (name, description, released, rating, platforms, genres, favorites, background_image, created) => {
 
-    // let genderDb = await Gender.findAll({
-    //     where: {
-    //         name: genres,
-    //     },
-    // });
+
+    const newGame = await Videogame.create({ name, description, released, rating, platforms, genres, favorites, background_image, created });
+
+    const newGenre = await Genre.findAll({
+        where: {
+            name: genres,
+        },
+    });
+
+    await newGame.addGenres(newGenre);
 
 
-    const result = await Videogame.create({ name, description, released, rating, platforms, genres, favorites, background_image, created });
-    return result
+    return newGame
 };
 
 module.exports = createVideoGame;

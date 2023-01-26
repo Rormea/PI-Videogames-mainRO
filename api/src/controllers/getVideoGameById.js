@@ -1,5 +1,5 @@
 // " vg significa videoGames"
-const { Videogame, Gender } = require("../db");
+const { Videogame, Genre } = require("../db");
 const axios = require("axios");
 const apiKey = "c9549fbafc6a41b48c796562e6e5989d"
 
@@ -9,7 +9,7 @@ const getVgById = async (id, seeker) => {
     if (seeker === "db") return await Videogame.findByPk(id,
         {
             include: {
-                model: Gender,
+                model: Genre,
                 attributes: ["name"],
             }
         }

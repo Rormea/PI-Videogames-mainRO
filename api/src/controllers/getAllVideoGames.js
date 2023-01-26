@@ -1,6 +1,6 @@
 // " vg significa videoGames"
 const normalizeArray = require("./normalizeArray")
-const { Videogame } = require("../db");
+const { Videogame, Genre } = require("../db");
 const axios = require("axios");
 const apiKey = "c9549fbafc6a41b48c796562e6e5989d"
 
@@ -8,7 +8,16 @@ const apiKey = "c9549fbafc6a41b48c796562e6e5989d"
 
 const getAllVideoGames = async () => {
 
-    const dbVideoGame = await Videogame.findAll();
+    const dbVideoGame = await Videogame.findAll({
+        include:
+        {
+            model: Genre,
+            attributes: ["name"],
+            throught: {
+                attributes: [],
+            },
+        },
+    });
 
 
     let pages = [];

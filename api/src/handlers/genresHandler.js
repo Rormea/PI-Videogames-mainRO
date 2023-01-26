@@ -1,11 +1,11 @@
-const { Videogame, Gender } = require("../db");
+const { Videogame, Genre } = require("../db");
 const axios = require("axios");
-const { getAllGender, apiToDb } = require("../controllers/getAllGender")
+const { getAllGenres, apiToDb } = require("../controllers/getAllGenres")
 
 
-const getAllGenderHandler = async (req, res) => {
+const getAllGenresHandler = async (req, res) => {
     try {
-        const result = await getAllGender();
+        const result = await getAllGenres();
         res.status(200).send(result)
     } catch (error) {
         res.status(400).send({ error: error.message })
@@ -26,4 +26,4 @@ const apiToDbHandler = async (req, res) => {
 
 
 
-module.exports = { getAllGenderHandler, apiToDbHandler }
+module.exports = { getAllGenresHandler, apiToDbHandler }

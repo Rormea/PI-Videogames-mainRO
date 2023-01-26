@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getGenres } from "../../redux/actions"
+import { getGenres, filterByGen } from "../../redux/actions"
 
 
 const Filters = () => {
@@ -13,6 +13,11 @@ const Filters = () => {
     }, [dispatch])
 
     const allGenres = useSelector(state => state.allGenres);
+
+
+    const handlerFilterGen = (e) => {
+        dispatch(filterByGen(e.target.value))
+    };
 
     return (
         <div>
@@ -26,7 +31,8 @@ const Filters = () => {
                 <option value="DowRt">↓ Rating</option>
             </select>
 
-            <select>
+            <select onChange={e => handlerFilterGen(e)}>
+                <option value='all'>All Genres</option>
                 {allGenres.map((gen) => {
                     return <option key={gen.id} value={gen.name}>{gen.name}</option>
                 })}

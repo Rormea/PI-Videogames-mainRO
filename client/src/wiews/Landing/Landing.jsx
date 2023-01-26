@@ -5,7 +5,6 @@ import style from "./Landing.module.css"
 // import FondoLand from "../asset/img/FondoLand.jpg"
 
 
-
 const Landing = () => {
     return (
         <div className={style.container}>
