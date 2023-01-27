@@ -11,6 +11,7 @@ const getVgById = async (id, seeker) => {
             include: {
                 model: Genre,
                 attributes: ["name"],
+
             }
         }
 

@@ -7,12 +7,12 @@ import style from "./Paginated.module.css"
 
 
 
-const Paginated = ({ gamesPerPage, allVideoGames, pagination }) => {
+const Paginated = ({ gamesPerPage, totalGames, pagination }) => {
 
 
     const numberPage = [];
 
-    for (let i = 1; i <= Math.ceil(allVideoGames / gamesPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalGames / gamesPerPage); i++) {
         numberPage.push(i)
     };
 

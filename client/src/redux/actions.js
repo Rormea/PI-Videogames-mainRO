@@ -8,6 +8,10 @@ export const GET_VIDEOGAMEBYID = "GET_VIDEOGAMEBYID";
 export const GET_VIDEOGAMEBYNAME = "GET_VIDEOGAMEBYNAME";
 export const GET_GENRES = "GET_GENRES";
 export const FILTER_GENRES = "FILTER_GENRES";
+export const FILTER_ORIGIN = "FILTER_ORIGIN";
+export const ORDER_NAME = "ORDER_NAME";
+export const ORDER_RATING = "ORDER_RATING";
+
 
 
 
@@ -61,11 +65,11 @@ export const getGenres = () => async (dispatch) => {
     dispatch({ type: SET_LOADING });
 
     try {
-        const apiRes = await axios.get("http://localhost:3001/genders");
-        const allGenres = apiRes.data
+        const apiRes = await axios.get("http://localhost:3001/genres");
+        const allGenresRes = apiRes.data
         dispatch({
             type: GET_GENRES,
-            payload: allGenres
+            payload: allGenresRes
         })
     } catch (error) {
         dispatch({ type: SET_ERROR, payload: error });
@@ -73,11 +77,35 @@ export const getGenres = () => async (dispatch) => {
 };
 
 export const filterByGen = (payload) => {
-    console.log(payload)
+
     return {
         type: FILTER_GENRES,
         payload
     }
 };
 
+export const filterByOrigin = (payload) => {
+
+    return {
+        type: FILTER_ORIGIN,
+        payload
+    }
+};
+
+
+export const orderByName = (payload) => {
+
+    return {
+        type: ORDER_NAME,
+        payload
+    }
+};
+
+export const orderByRating = (payload) => {
+    console.log(payload)
+    return {
+        type: ORDER_RATING,
+        payload
+    }
+};
 

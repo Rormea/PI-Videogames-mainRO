@@ -2,7 +2,7 @@
 import {
     GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
     SET_LOADING, GET_VIDEOGAMEBYNAME, GET_GENRES,
-    FILTER_GENRES
+    FILTER_GENRES, FILTER_ORIGIN, ORDER_NAME, ORDER_RATING
 } from "./actions"
 
 
@@ -10,6 +10,7 @@ import {
 const initialState = {
     allVideoGames: [],
     allGenres: [],
+    gamesAllFEver: [],
     isLoading: false,
     gamesError: {},
 }
@@ -24,7 +25,11 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, isLoading: false, gamesError: action.payload };
 
         case GET_VIDEOGAMES:
-            return { ...state, allVideoGames: action.payload };
+            return {
+                ...state,
+                allVideoGames: action.payload,
+                gamesAllFEver: action.payload,
+            };
 
         case GET_VIDEOGAMEBYID:
             return { ...state, allVideoGames: action.payload };
@@ -36,20 +41,67 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, allGenres: action.payload };
 
         case FILTER_GENRES:
-            const allGames = state.allVideoGames
             const actPay = action.payload
-            const genresFil = actPay === "all"
-            // ? allGames : allGames.filter(vg => /* vg.genres === action.payload */ console.log(vg.genres, actPay))
-            if (actPay === "all") return allGames
-            if (actPay !== "all") {
-                allGames.filter(vg => {
-                    if (vg.genres.some(gen => gen.name === actPay)) return vg.genres.map(gen => gen.name === actPay)
-                });
-            }
+            const gameAll = state.gamesAllFEver
+
+            let filterGender = (actPay === "all")
+                ? gameAll
+                : gameAll.filter(vg => {
+                    if (vg.genres.some(gen => gen.name === actPay)) {
+                        return vg.genres.map(gen => gen.name === actPay)
+                    }
+                })
+            return { ...state, allVideoGames: filterGender };
+
+
+        case FILTER_ORIGIN:
+
+            const filterOrigin = action.payload === "created"
+                ? state.gamesAllFEver.filter(vg => vg.created)
+                : state.gamesAllFEver.filter(vg => !vg.created)
+
+
             return {
                 ...state,
-                allVideoGames: genresFil
-            }
+                allVideoGames: action.payload === "all" ? state.gamesAllFEver : filterOrigin,
+            };
+
+        case ORDER_NAME:
+
+            let orderName = action.payload === "asc" ?
+                state.gamesAllFEver.sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (b.name > a.name) {
+                        return -1;
+                    }
+                    return 0;
+                }) :
+                state.gamesAllFEver.sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return -1;
+                    }
+                    if (b.name > a.name) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            // console.log(orderName)
+
+            return { ...state, allVideoGames: orderName };
+
+
+        case ORDER_RATING:
+
+            let orderRating = action.payload === "UpRt"
+                ? state.gamesAllFEver.sort((a, b) => b.rating - a.rating)
+                : state.gamesAllFEver.sort((a, b) => a.rating - b.rating);
+            console.log(orderRating)
+            return { ...state, allVideoGames: orderRating };
+
+
+
 
         default:
             return { ...state }

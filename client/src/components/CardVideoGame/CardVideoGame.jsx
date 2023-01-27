@@ -4,6 +4,7 @@ import noImg from "../assets/noImg.jpg"
 
 
 const CardVideoGame = (props) => {
+
     return (
         <div className={style.CardVideoGame}>
             <h2>{props.name}</h2>
@@ -13,7 +14,9 @@ const CardVideoGame = (props) => {
                 alt='game'
             />
             <p>{props.rating ? `Rating: ⭐${props.rating}` : null}</p>
-            <p className={style.cardGameGenres}>{props.genders?.join(', ')}</p>
+            <p className={style.cardGameGenres}>{props.genres?.join(', ')}</p>
+
+
         </div>
     );
 };

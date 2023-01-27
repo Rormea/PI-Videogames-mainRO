@@ -1832,12 +1832,13 @@ const VideoGameContainer = () => {
     //     setCurrentPage(numberPage)
     // };
 
-    const allGames = useSelector(state => state.allVideoGames);
+    const totalGames = useSelector(state => state.allVideoGames);
     const [currentPage, setCurrentPage] = useState(1);
     const [gamesPerPage] = useState(15);
     const indexLastGame = currentPage * gamesPerPage //15
     const indexFirstGame = indexLastGame - gamesPerPage //0
-    const currentGame = allGames.slice(indexFirstGame, indexLastGame)
+    const currentGame = totalGames.slice(indexFirstGame, indexLastGame)
+    // console.log(totalGames)
 
     const pagination = (numberPage) => {
         setCurrentPage(numberPage)
@@ -1851,7 +1852,7 @@ const VideoGameContainer = () => {
             <div>
                 <Paginated
                     gamesPerPage={gamesPerPage}
-                    allVideoGames={allGames.length}
+                    totalGames={totalGames.length}
                     pagination={pagination}
                 />
             </div>
@@ -1862,7 +1863,7 @@ const VideoGameContainer = () => {
                         key={vg.id}
                         id={vg.id}
                         name={vg.name}
-                        genders={vg.genres}
+                        genres={vg.genres.map(el => el.name)}
                         img={vg.background_image}
                         rating={vg.rating}
 
