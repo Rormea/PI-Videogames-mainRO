@@ -2,7 +2,7 @@
 import React from 'react';
 import VideoGameContainer from "../../components/VideoGameContainer/VideoGameContainer"
 import Filters from "../../components/Filters/Filters"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getVideoGames, getGenres } from '../../redux/actions';
 import style from "./Home.module.css"
@@ -10,17 +10,18 @@ import style from "./Home.module.css"
 
 
 const Home = () => {
-
-
+    // Global state
     const dispatch = useDispatch();
+    const gamelist = useSelector(state => state.allVideoGames)
+    const genreslist = useSelector(state => state.allGenres)
+
 
     useEffect(() => {
-        dispatch(getGenres())
-    }, [dispatch])
+        if (!gamelist.length) dispatch(getVideoGames());
+        if (!genreslist.length) dispatch(getGenres());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-    useEffect(() => {
-        dispatch(getVideoGames());
-    }, [dispatch]);
 
 
     return (
@@ -29,7 +30,10 @@ const Home = () => {
 
             <Filters />
             <br />
-            <VideoGameContainer />
+            <VideoGameContainer
+
+            />
+            <br />
 
 
 

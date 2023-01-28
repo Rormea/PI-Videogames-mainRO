@@ -34,7 +34,7 @@ export const getVideoGames = () => async (dispatch) => {
 };
 
 export const getVgById = (id) => async (dispatch) => {
-    const apiRes = await axios.get(`http://localhost:3001/videogames:${id}`);
+    const apiRes = await axios.get(`http://localhost:3001/videogames/${id}`);
     const videoGameId = apiRes.data;
     dispatch(
         {

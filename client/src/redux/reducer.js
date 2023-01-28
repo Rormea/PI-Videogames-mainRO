@@ -9,6 +9,7 @@ import {
 
 const initialState = {
     allVideoGames: [],
+    detail: [],
     allGenres: [],
     gamesAllFEver: [],
     isLoading: false,
@@ -32,7 +33,7 @@ const rootReducer = (state = initialState, action) => {
             };
 
         case GET_VIDEOGAMEBYID:
-            return { ...state, allVideoGames: action.payload };
+            return { ...state, detail: action.payload };
 
         case GET_VIDEOGAMEBYNAME:
             return { ...state, allVideoGames: action.payload };

@@ -5,9 +5,9 @@ import SeachBar from '../SeachBar/SeachBar';
 const NavBar = () => {
     return (
         <div className={style.mainContainer}>
-            <Link to="home">HOME</Link>
-            <Link to="form">ADD VIDEO GAME</Link>
-            <Link to="favorites">FAVORITES</Link>
+            <Link to="/home">HOME</Link>
+            <Link to="/form">ADD VIDEO GAME</Link>
+            <Link to="/favorites">FAVORITES</Link>
 
             <btBackHome />
 
