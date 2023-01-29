@@ -1,6 +1,7 @@
 /* eslint-disable no-const-assign */
 import React from 'react';
 import CardVideoGame from '../CardVideoGame/CardVideoGame';
+import Filters from '../Filters/Filters';
 import style from "./VideoGameContainer.module.css"
 import Paginated from '../Paginated/Paginated';
 import { useSelector } from 'react-redux';
@@ -1856,6 +1857,10 @@ const VideoGameContainer = () => {
                     pagination={pagination}
                 />
             </div>
+
+            <Filters
+                currentPage={currentPage} setCurrentPage={setCurrentPage}
+            />
 
             <div className={style.containerP}>
                 {currentGame?.map((vg) => {

@@ -2,13 +2,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterByGen, filterByOrigin, orderByName, orderByRating } from "../../redux/actions"
+import { useState } from 'react';
 
 
+const Filters = ({ currentPage, setCurrentPage }) => {
+    // console.log(props)
 
-const Filters = () => {
 
     const dispatch = useDispatch();
-
+    const [order, setOrder] = useState("");
     // useEffect(() => {
     //     dispatch(getGenres())
     // }, [dispatch])
@@ -16,22 +18,29 @@ const Filters = () => {
     const Genres = useSelector(state => state.allGenres);
 
 
+
     const handlerFilterGen = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         dispatch(filterByGen(e.target.value))
     };
 
     const handlerFilterOrigin = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         dispatch(filterByOrigin(e.target.value))
     };
 
     const handlerFilterName = (e) => {
+        e.preventDefault()
         dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Ordenado ${e.target.value}`);
     };
 
     const handlerFilterRating = (e) => {
+        e.preventDefault()
         dispatch(orderByRating(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Ordenado ${e.target.value}`);
     };
 
 

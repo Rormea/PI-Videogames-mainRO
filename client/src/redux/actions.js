@@ -114,10 +114,10 @@ export const orderByRating = (payload) => {
 export const postVideoGame = (payload) => async (dispatch) => {
     dispatch({ type: SET_LOADING });
     try {
-        const apiRes = await axios.get("http://localhost:3001/videogames", payload);
-        const postVg = apiRes.data;
+        const apiRes = await axios.post("http://localhost:3001/videogames", payload);
+        // const postVg = apiRes.data;
 
-        return postVg
+        return apiRes
 
     } catch (error) {
         dispatch({ type: SET_ERROR, payload: error });

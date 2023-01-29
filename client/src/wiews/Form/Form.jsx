@@ -74,22 +74,22 @@ const Form = () => {
     };
     // console.log(input.platforms)
 
-    // const handlerSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(input)
-    //     dispatch(postVideoGame(input))
-    //     alert("Personaje Creado")
-    //     setInput({
-    //         name: "",
-    //         description: "",
-    //         released: "",
-    //         rating: "",
-    //         genres: [],
-    //         platforms: [],
-    //         background_image: "",
-    //     });
-    //     history.push('/home')
-    // };
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        console.log(input)
+        dispatch(postVideoGame(input))
+        alert("Personaje Creado")
+        setInput({
+            name: "",
+            description: "",
+            released: "",
+            rating: "",
+            genres: [],
+            platforms: [],
+            background_image: "",
+        });
+        history.push('/home')
+    };
 
 
     return (
@@ -97,7 +97,7 @@ const Form = () => {
             <Link to='/home'><button>Back</button></Link>
             <h1>Create a New Videogame</h1>
 
-            <form /*onSubmit={(e) => handlerSubmit(e)}*/>
+            <form onSubmit={(e) => handlerSubmit(e)}>
 
                 <div>
                     <label>Name</label>
