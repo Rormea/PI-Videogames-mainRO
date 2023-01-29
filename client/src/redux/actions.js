@@ -11,6 +11,8 @@ export const FILTER_GENRES = "FILTER_GENRES";
 export const FILTER_ORIGIN = "FILTER_ORIGIN";
 export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_RATING = "ORDER_RATING";
+export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
+export const GET_PLATFORM = "GET_PLATFORM";
 
 
 
@@ -106,6 +108,35 @@ export const orderByRating = (payload) => {
     return {
         type: ORDER_RATING,
         payload
+    }
+};
+
+export const postVideoGame = (payload) => async (dispatch) => {
+    dispatch({ type: SET_LOADING });
+    try {
+        const apiRes = await axios.get("http://localhost:3001/videogames", payload);
+        const postVg = apiRes.data;
+
+        return postVg
+
+    } catch (error) {
+        dispatch({ type: SET_ERROR, payload: error });
+    }
+};
+
+export const getPlatforms = () => async (dispatch) => {
+    dispatch({ type: SET_LOADING });
+    try {
+        const apiRes = await axios.get("http://localhost:3001/videogames");
+        const allPlats = apiRes.data;
+        dispatch(
+            {
+                type: GET_PLATFORM,
+                payload: allPlats
+            }
+        );
+    } catch (error) {
+        dispatch({ type: SET_ERROR, payload: error });
     }
 };
 

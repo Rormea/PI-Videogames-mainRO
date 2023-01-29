@@ -19,8 +19,7 @@ const Home = () => {
     useEffect(() => {
         if (!gamelist.length) dispatch(getVideoGames());
         if (!genreslist.length) dispatch(getGenres());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [gamelist, genreslist, dispatch])
 
 
 

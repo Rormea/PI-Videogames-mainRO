@@ -2,7 +2,8 @@
 import {
     GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
     SET_LOADING, GET_VIDEOGAMEBYNAME, GET_GENRES,
-    FILTER_GENRES, FILTER_ORIGIN, ORDER_NAME, ORDER_RATING
+    FILTER_GENRES, FILTER_ORIGIN, ORDER_NAME, ORDER_RATING,
+    CREATE_VIDEOGAME, GET_PLATFORM
 } from "./actions"
 
 
@@ -11,6 +12,7 @@ const initialState = {
     allVideoGames: [],
     detail: [],
     allGenres: [],
+    allPlatforms: [],
     gamesAllFEver: [],
     isLoading: false,
     gamesError: {},
@@ -101,6 +103,14 @@ const rootReducer = (state = initialState, action) => {
             console.log(orderRating)
             return { ...state, allVideoGames: orderRating };
 
+
+        case GET_PLATFORM:
+            const allPlats = action.payload.map(vg => vg.platforms).flat()
+            // console.log(allPlats)
+            return { ...state, allPlatforms: allPlats };
+
+        case CREATE_VIDEOGAME:
+            return { ...state };
 
 
 

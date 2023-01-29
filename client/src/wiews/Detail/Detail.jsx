@@ -23,7 +23,7 @@ const Detail = () => {
     const dG = detailGame[0];
     const regex = /(<([^#$>]+)>)/gi;
 
-    console.log(detailGame)
+    // console.log(detailGame)
 
     return (
         <div >
