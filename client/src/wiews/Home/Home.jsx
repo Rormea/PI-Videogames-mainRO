@@ -1,7 +1,7 @@
 
 import React from 'react';
 import VideoGameContainer from "../../components/VideoGameContainer/VideoGameContainer"
-// import Filters from "../../components/Filters/Filters"
+import Filters from "../../components/Filters/Filters"
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getVideoGames, getGenres } from '../../redux/actions';
@@ -27,8 +27,8 @@ const Home = () => {
         <div className={style.Container}>
 
 
-            {/* <Filters />
-            <br /> */}
+            <Filters />
+            <br />
             <VideoGameContainer
 
             />

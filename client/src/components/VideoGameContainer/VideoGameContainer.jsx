@@ -1,15 +1,20 @@
 /* eslint-disable no-const-assign */
 import React from 'react';
 import CardVideoGame from '../CardVideoGame/CardVideoGame';
-import Filters from '../Filters/Filters';
+// import Filters from '../Filters/Filters';
 import style from "./VideoGameContainer.module.css"
 import Paginated from '../Paginated/Paginated';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { orderByName, orderByRating } from "../../redux/actions"
 
 
 
 const VideoGameContainer = () => {
+
+    const dispatch = useDispatch();
+    // const [order, setOrder] = useState(true);
+
 
     // const allVideoGames = [{
     //     "id": 3498,
@@ -1846,8 +1851,40 @@ const VideoGameContainer = () => {
     };
 
 
+    const [order, setOrder] = useState(true);
+
+    const handlerFilterName = (e) => {
+        e.preventDefault()
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        // setOrder(`Ordenado ${e.target.value}`);
+        setOrder(!order)
+    };
+
+    const handlerFilterRating = (e) => {
+        e.preventDefault()
+        dispatch(orderByRating(e.target.value))
+        setCurrentPage(1);
+        // setOrder(`Ordenado ${e.target.value}`);
+        setOrder(!order)
+    };
+
+
+
     return (
         <div >
+
+            <select onChange={e => handlerFilterName(e)}>
+                <option value="asc">A-Z</option>
+                <option value="des">Z-A</option>
+            </select>
+
+            <select onChange={e => handlerFilterRating(e)}>
+                <option value="UpRt">↑ Rating</option>
+                <option value="DowRt">↓ Rating</option>
+            </select>
+
+
 
 
             <div>
@@ -1858,9 +1895,9 @@ const VideoGameContainer = () => {
                 />
             </div>
 
-            <Filters
+            {/* <Filters
                 currentPage={currentPage} setCurrentPage={setCurrentPage}
-            />
+            /> */}
 
             <div className={style.containerP}>
                 {currentGame?.map((vg) => {
