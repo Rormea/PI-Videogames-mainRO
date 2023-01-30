@@ -2,7 +2,7 @@
 /* eslint-disable no-const-assign */
 import React from 'react';
 import CardVideoGame from '../CardVideoGame/CardVideoGame';
-// import Filters from '../Filters/Filters';
+import Filters from '../Filters/Filters';
 import style from "./VideoGameContainer.module.css"
 import Paginated from '../Paginated/Paginated';
 import { useSelector, useDispatch } from 'react-redux';
@@ -1878,6 +1878,12 @@ const VideoGameContainer = () => {
     return (
         <div >
 
+
+
+            <SeachBar setCurrentPage={setCurrentPage} />
+
+            <Filters />
+
             <select onChange={e => handlerFilterName(e)}>
                 <option value="asc">A-Z</option>
                 <option value="des">Z-A</option>
@@ -1893,8 +1899,6 @@ const VideoGameContainer = () => {
                     Back to Home
                 </button>
             </div>
-
-            <SeachBar setCurrentPage={setCurrentPage} />
 
 
             <div>

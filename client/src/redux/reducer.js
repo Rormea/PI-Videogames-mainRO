@@ -30,6 +30,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_VIDEOGAMES:
             return {
                 ...state,
+                isLoading: false,
                 allVideoGames: action.payload,
                 gamesAllFEver: action.payload,
             };
@@ -38,7 +39,7 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, detail: action.payload };
 
         case GET_VIDEOGAMEBYNAME:
-            return { ...state, allVideoGames: action.payload };
+            return { ...state, allVideoGames: action.payload, isLoading: false, };
 
         case GET_GENRES:
             return { ...state, allGenres: action.payload };
@@ -110,7 +111,7 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, allPlatforms: allPlats };
 
         case CREATE_VIDEOGAME:
-            return { ...state };
+            return { ...state, isLoading: false, };
 
 
 

@@ -64,7 +64,6 @@ export const getVgByName = (name) => async (dispatch) => {
 
 
 export const getGenres = () => async (dispatch) => {
-    dispatch({ type: SET_LOADING });
 
     try {
         const apiRes = await axios.get("http://localhost:3001/genres");
@@ -125,7 +124,7 @@ export const postVideoGame = (payload) => async (dispatch) => {
 };
 
 export const getPlatforms = () => async (dispatch) => {
-    dispatch({ type: SET_LOADING });
+
     try {
         const apiRes = await axios.get("http://localhost:3001/videogames");
         const allPlats = apiRes.data;
