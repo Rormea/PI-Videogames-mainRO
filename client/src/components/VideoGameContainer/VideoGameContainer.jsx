@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-const-assign */
 import React from 'react';
 import CardVideoGame from '../CardVideoGame/CardVideoGame';
@@ -6,17 +7,17 @@ import style from "./VideoGameContainer.module.css"
 import Paginated from '../Paginated/Paginated';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { orderByName, orderByRating } from "../../redux/actions"
+import { orderByName, orderByRating, getVideoGames } from "../../redux/actions"
+import SeachBar from '../SeachBar/SeachBar';
 
 
 
 const VideoGameContainer = () => {
 
     const dispatch = useDispatch();
-    // const [order, setOrder] = useState(true);
 
 
-    // const allVideoGames = [{
+
     //     "id": 3498,
     //     "name": "Grand Theft Auto V",
     //     "released": "2013-09-17",
@@ -1869,7 +1870,10 @@ const VideoGameContainer = () => {
         setOrder(!order)
     };
 
-
+    const handlerClick = (e) => {
+        dispatch(getVideoGames())
+        setCurrentPage(1);
+    };
 
     return (
         <div >
@@ -1884,7 +1888,13 @@ const VideoGameContainer = () => {
                 <option value="DowRt">↓ Rating</option>
             </select>
 
+            <div>
+                <button className={style.btrainbow} onClick={(e) => { handlerClick(e) }}>
+                    Back to Home
+                </button>
+            </div>
 
+            <SeachBar setCurrentPage={setCurrentPage} />
 
 
             <div>
@@ -1895,9 +1905,9 @@ const VideoGameContainer = () => {
                 />
             </div>
 
-            {/* <Filters
-                currentPage={currentPage} setCurrentPage={setCurrentPage}
-            /> */}
+
+
+
 
             <div className={style.containerP}>
                 {currentGame?.map((vg) => {

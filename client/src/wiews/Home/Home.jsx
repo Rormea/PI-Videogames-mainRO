@@ -32,7 +32,7 @@ const Home = () => {
             <VideoGameContainer
 
             />
-            <br />
+
 
 
 

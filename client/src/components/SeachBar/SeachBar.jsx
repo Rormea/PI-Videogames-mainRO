@@ -6,7 +6,7 @@ import { getVgByName } from "../../redux/actions"
 
 
 
-const SeachBar = () => {
+const SeachBar = ({ setCurrentPage }) => {
 
     const [findState, setFindState] = useState("");
     const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const SeachBar = () => {
         e.preventDefault()
         dispatch(getVgByName(findState));
         setFindState("");
+        setCurrentPage(1)
 
     };
 
