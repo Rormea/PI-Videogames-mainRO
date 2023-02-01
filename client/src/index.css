@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+/* body {
+  background-image: url("https: //w0.peakpx.com/wallpaper/850/308/HD-wallpaper-dark-control-fun-game-gamer-games-gaming-logo-microsoft-play-xbox.jpg");
+} */
+
+
+body {
+  background-image: url("./components/assets/masFondo.jpg");
+}

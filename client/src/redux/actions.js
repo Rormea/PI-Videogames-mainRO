@@ -13,6 +13,8 @@ export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_RATING = "ORDER_RATING";
 export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const GET_PLATFORM = "GET_PLATFORM";
+// export const ADD_FAVORITES = "ADD_FAVORITES";
+// export const REMOVE_FAV = "REMOVE_FAV";
 
 
 
@@ -138,4 +140,18 @@ export const getPlatforms = () => async (dispatch) => {
         dispatch({ type: SET_ERROR, payload: error });
     }
 };
+
+// export const addFavorites = (id) => {
+//     return {
+//         type: ADD_FAVORITES,
+//         payload: id
+//     }
+// };
+
+// export const removeFavorites = (id) => {
+//     return {
+//         type: REMOVE_FAV,
+//         payload: id
+//     }
+// };
 

@@ -1,9 +1,33 @@
-.App {
-  text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* .App-logo {
+body {
+  background-image: url("./components/assets/masFondo.jpg");
+  font-family: 'Poppins', sans-serif;
+
+}
+
+main {
+  max-width: 800px;
+  width: 90%;
+  margin: auto;
+  padding: 40;
+
+
+}
+
+/* .App {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-image: url("https: //w0.peakpx.com/wallpaper/850/308/HD-wallpaper-dark-control-fun-game-gamer-games-gaming-logo-microsoft-play-xbox.jpg");
+}
+
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -15,7 +39,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #141822;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

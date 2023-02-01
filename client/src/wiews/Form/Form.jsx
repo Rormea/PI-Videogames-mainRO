@@ -22,10 +22,10 @@ const validate = (input) => {
         errors.rating = 'The rating field cannot be less than 1.0';
     };
 
-    // if (!input.background_image || !/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.background_image)
-    // ) {
-    //     errors.background_image = 'invalid URL, You must use an image of the extensions (png, jpg, gif)';
-    // };
+    if (input.background_image !== "" && !/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.background_image)
+    ) {
+        errors.background_image = 'invalid URL, You must use an image of the extensions (png, jpg, gif)';
+    };
 
     if (!input.description) errors.description = 'The description is required.';
 
@@ -85,14 +85,14 @@ const Form = () => {
     };
 
     const handlerOnBlur = (e) => {
-        // handlerChange(e);
+        handlerChange(e);
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
         }))
     };
 
-    console.log(input)
+    // console.log(input)
 
 
     const handlerSelectGen = (e) => {
@@ -139,10 +139,11 @@ const Form = () => {
             ...input,
             [e.target.name]: e.target.value
         }));
-        console.log(errors)
-        if (Object.keys(errors).length === 0) {
+        // console.log(errors)
+        // console.log(input !== null)
+        if (Object.keys(errors).length === 0 && input !== null) {
             dispatch(postVideoGame(input))
-            alert("Personaje Creado")
+            alert("VideoGame was created successfully.")
             setInput({
                 name: "",
                 description: "",
@@ -161,77 +162,84 @@ const Form = () => {
 
 
     return (
-        <div>
-            <Link to='/home'><button>Back</button></Link>
-            <h1>Create a New Videogame</h1>
+        <div >
 
-            <form onSubmit={(e) => handlerSubmit(e)}>
+            <h1 className={style.title}>Create a New Videogame</h1>
+
+            <form className={style.form} onSubmit={(e) => handlerSubmit(e)}>
 
                 <div>
-                    <label>Name</label>
-                    <input type="text" value={input.name} name="name" onChange={handlerChange} onBlur={handlerOnBlur} />
-                    {errors.name && (<p className={style.error}>{errors.name}</p>)}
+                    <label className={style.Slabel}>Name</label>
+                    <input className={style.inputA} type="text" value={input.name} name="name" onChange={handlerChange} onBlur={handlerOnBlur} />
+                    {errors.name && (<p className={style.pF}> ⚠️{errors.name}</p>)}
+                </div>
+
+
+                <div>
+                    <label className={style.Slabel}>Released</label>
+                    <input className={style.inputA} type="date" value={input.released} name="released" onChange={handlerChange} onBlur={handlerOnBlur} />
+                    {errors.released && (<p className={style.pF}>⚠️{errors.released}</p>)}
                 </div>
 
                 <div>
-                    <label>Description</label>
-                    {/* <input type="tex" value={input.description} name="description" /> */}
-                    <textarea value={input.description} name="description" cols="30" rows="10" onChange={handlerChange} onBlur={handlerOnBlur}></textarea>
-                    {errors.description && (<p className={style.error}>{errors.description}</p>)}
+                    <label className={style.Slabel} >Rating</label>
+                    <input className={style.inputA} type="number" value={input.rating} name="rating" onChange={handlerChange} onBlur={handlerOnBlur} />
+                    {errors.rating && (<p className={style.pF}>⚠️{errors.rating}</p>)}
                 </div>
 
                 <div>
-                    <label>Released</label>
-                    <input type="date" value={input.released} name="released" onChange={handlerChange} onBlur={handlerOnBlur} />
-                    {errors.released && (<p className={style.error}>{errors.released}</p>)}
+                    <label className={style.Slabel} >Background_image</label>
+                    <input className={style.inputA} type="text" value={input.background_image} name="background_image" onChange={handlerChange} onBlur={handlerOnBlur} />
+                    {errors.background_image && (<p className={style.pF}>⚠️{errors.background_image}</p>)}
                 </div>
 
                 <div>
-                    <label>Rating</label>
-                    <input type="number" value={input.rating} name="rating" onChange={handlerChange} onBlur={handlerOnBlur} />
-                    {errors.rating && (<p className={style.error}>{errors.rating}</p>)}
-                </div>
-
-                <div>
-                    <label>Background_image</label>
-                    <input type="text" value={input.background_image} name="background_image" onChange={handlerChange} onBlur={handlerOnBlur} />
-                    {errors.background_image && (<p className={style.error}>{errors.background_image}</p>)}
-                </div>
-
-                <div>
-                    <label>Genres</label>
-                    <select onChange={handlerSelectGen} onBlur={handlerOnBlur}>
+                    <label className={style.Slabel} >Genres</label>
+                    <select className={style.selectB} onChange={handlerSelectGen} onBlur={handlerOnBlur}>
                         {/* <option value="none">none</option> */}
                         <option value="Delete">Delete Selection</option>
                         {genres.map((gen) => (
                             <option value={gen.name}>{gen.name}</option>
                         ))}
                     </select>
-                    <ul><li>{input.genres.map(el => <button value={el} onClick={handlerClick}>{el}</button>)}</li></ul>
+                    <ul><li>{input.genres.map(el => <button className={style.buttonF} value={el} onClick={handlerClick}>{el}</button>)}</li></ul>
                     {/* <ul><li>{input.genres.map(el => el + ", ")}</li></ul> */}
-                    {errors.genres && (<p className={style.error}>{errors.genres}</p>)}
+                    {errors.genres && (<p className={style.pF}>⚠️{errors.genres}</p>)}
 
                 </div>
 
                 <div>
-                    <label>Platforms</label>
-                    <select onChange={handlerSelectPlat} onBlur={handlerOnBlur}>
+                    <label className={style.Slabel}>Platforms</label>
+                    <select className={style.selectB} onChange={handlerSelectPlat} onBlur={handlerOnBlur}>
                         <option value="Delete">Delete Selection</option>
                         {platform.map((plat) => (
                             <option value={plat}>{plat}</option>
                         ))}
                     </select>
-                    <ul><li>{input.platforms.map(el => <button value={el} onClick={handlerClick}>{el}</button>)}</li></ul>
-                    {errors.platforms && (<p className={style.error}>{errors.platforms}</p>)}
+                    <ul><li>{input.platforms.map(el => <button button className={style.buttonF} value={el} onClick={handlerClick}>{el}</button>)}</li></ul>
+                    {errors.platforms && (<p className={style.pF}>⚠️{errors.platforms}</p>)}
                 </div>
 
-                <button type="submit" >Add VideoGame</button>
+                <div>
+                    <label className={style.Slabel}>Description</label>
+                    {/* <input type="tex" value={input.description} name="description" /> */}
+                    <textarea className={style.textareaB} value={input.description} name="description" cols="30" rows="10" onChange={handlerChange} onBlur={handlerOnBlur}></textarea>
+                    {errors.description && (<p className={style.pF}>⚠️{errors.description}</p>)}
+                </div>
+
+
+
+                <button button className={style.buttonF} type="submit" >Add VideoGame</button>
 
 
 
             </form >
+
+
+            <Link to='/home'><button button className={style.buttonF} >Back</button></Link>
         </div >
     );
 };
 
 export default Form;
+

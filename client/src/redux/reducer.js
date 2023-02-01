@@ -3,7 +3,7 @@ import {
     GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
     SET_LOADING, GET_VIDEOGAMEBYNAME, GET_GENRES,
     FILTER_GENRES, FILTER_ORIGIN, ORDER_NAME, ORDER_RATING,
-    CREATE_VIDEOGAME, GET_PLATFORM
+    CREATE_VIDEOGAME, GET_PLATFORM, /*ADD_FAVORITES, REMOVE_FAV*/
 } from "./actions"
 
 
@@ -14,6 +14,7 @@ const initialState = {
     allGenres: [],
     allPlatforms: [],
     gamesAllFEver: [],
+    // favorites: [],
     isLoading: false,
     gamesError: {},
 }
@@ -107,13 +108,47 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_PLATFORM:
             const allPlats = action.payload.map(vg => vg.platforms).flat()
+            const unicPlats = [...new Set(allPlats)]
             // console.log(allPlats)
-            return { ...state, allPlatforms: allPlats };
+            return { ...state, allPlatforms: unicPlats };
 
         case CREATE_VIDEOGAME:
             return { ...state, isLoading: false, };
 
+        // case ADD_FAVORITES:
+        //     const onlyFav = state.allVideoGames.filter(vg => vg.id === action.payload)
+        //     console.log(onlyFav)
+        //     return {
+        //         ...state,
+        //         favorites: onlyFav,
+        //         allVideoGames: [...state.allVideoGames, state.allVideoGames.favorites = true]
 
+        //     };
+
+        // case REMOVE_FAV:
+        //     const filtered = state.favorites?.filter(fav => fav.id !== action.payload)
+
+        //     return {
+        //         ...state,
+        //         favorites: filtered,
+        //         allVideoGames: [...state.allVideoGames, state.allVideoGames.favorites = false]
+        //     };
+
+        // case ADD_FAVORITES:
+
+        //     return {
+        //         ...state,
+        //         favorites: [...state.favorites, action.payload]
+        //     };
+
+        // case REMOVE_FAV:
+        //     const filtered = state.favorites?.filter(fav => fav.id !== action.payload)
+
+        //     return {
+        //         ...state,
+        //         favorites: filtered,
+
+        //     };
 
         default:
             return { ...state }

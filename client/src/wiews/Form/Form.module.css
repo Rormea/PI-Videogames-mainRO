@@ -1,5 +1,89 @@
-.error {
+/* .error {
     color: red;
     font-size: small;
     font-family: Georgia, 'Times New Roman', Times, serif;
+} */
+
+.title {
+    color: #1668c4;
+}
+
+
+
+.form {
+    width: 30%;
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+    background: url("../../components/assets/fondo.jpg");
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+.Slabel {
+    font-size: 15px;
+    font-weight: 700;
+    display: inline-block;
+    width: 100%;
+    color: #1668c4;
+}
+
+.textareaB {
+    resize: vertical;
+    max-height: 200px;
+    min-height: 50px;
+}
+
+.inputA,
+.textareaB,
+.selectB {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0 40px 0 10px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    height: 45px;
+    line-height: 45px;
+    transition: 3.s ease all;
+    border: 3px solid darkgrey;
+    background-color: rgb(39, 29, 29);
+    color: #1668c4;
+
+
+}
+
+.inputA:focus,
+.textareaB:focus,
+.selectB:focus {
+    border: 3px solid #4A88f4;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.buttonF {
+    margin-bottom: 0;
+    background-color: #1668c4;
+    color: black;
+    border: none;
+    height: 40px;
+    padding: 5px;
+    border: solid 1px white;
+}
+
+.buttonF:hover {
+    background-color: #9b1414;
+    cursor: pointer;
+}
+
+.pF {
+    font-size: 11px;
+    margin-bottom: 0;
+    color: black;
+    background-color: #af5050;
+
+
+
+    /* display: none; */
+
 }
