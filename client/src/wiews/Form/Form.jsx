@@ -139,9 +139,9 @@ const Form = () => {
             ...input,
             [e.target.name]: e.target.value
         }));
-        // console.log(errors)
-        // console.log(input !== null)
-        if (Object.keys(errors).length === 0 && input !== null) {
+        console.log(errors)
+        console.log(input !== null)
+        if (Object.keys(errors).length === 0 && input.name !== "") {
             dispatch(postVideoGame(input))
             alert("VideoGame was created successfully.")
             setInput({

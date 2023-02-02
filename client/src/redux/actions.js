@@ -13,6 +13,7 @@ export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_RATING = "ORDER_RATING";
 export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const GET_PLATFORM = "GET_PLATFORM";
+export const CLEAR = "CLEAR";
 // export const ADD_FAVORITES = "ADD_FAVORITES";
 // export const REMOVE_FAV = "REMOVE_FAV";
 
@@ -38,14 +39,21 @@ export const getVideoGames = () => async (dispatch) => {
 };
 
 export const getVgById = (id) => async (dispatch) => {
-    const apiRes = await axios.get(`http://localhost:3001/videogames/${id}`);
-    const videoGameId = apiRes.data;
-    dispatch(
-        {
-            type: GET_VIDEOGAMEBYID,
-            payload: videoGameId
-        }
-    )
+    dispatch({ type: SET_LOADING });
+    try {
+        const apiRes = await axios.get(`http://localhost:3001/videogames/${id}`);
+        const videoGameId = apiRes.data;
+        // console.log(videoGameId)
+        dispatch({ type: SET_LOADING });
+        dispatch(
+            {
+                type: GET_VIDEOGAMEBYID,
+                payload: videoGameId
+            }
+        )
+    } catch (error) {
+        dispatch({ type: SET_ERROR, payload: error });
+    }
 };
 
 export const getVgByName = (name) => async (dispatch) => {
@@ -138,6 +146,14 @@ export const getPlatforms = () => async (dispatch) => {
         );
     } catch (error) {
         dispatch({ type: SET_ERROR, payload: error });
+    }
+};
+
+export const clear = () => {
+
+    return {
+        type: CLEAR,
+
     }
 };
 

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterByGen, filterByOrigin } from "../../redux/actions"
+import s from "../Filters/Filters.module.css"
 
 
 
@@ -23,16 +24,16 @@ const Filters = () => {
 
 
     return (
-        <div>
+        <div className={s.filters}>
 
-            <select onChange={e => handlerFilterGen(e)}>
+            <select className={s.options} onChange={e => handlerFilterGen(e)}>
                 <option value='all'>All Genres</option>
                 {Genres.map((gen) => {
                     return <option key={gen.id} value={gen.name}>{gen.name}</option>
                 })}
             </select>
 
-            <select onChange={e => handlerFilterOrigin(e)}>
+            <select className={s.options} onChange={e => handlerFilterOrigin(e)}>
                 <option value="all">All Games</option>
                 <option value="api">Api Games</option>
                 <option value="created">Created Games</option>

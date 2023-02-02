@@ -1,11 +1,11 @@
-.imgLoad {
+.errorA {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
 }
 
-.img {
+.errorB {
     height: 25vh;
     width: 25%;
 

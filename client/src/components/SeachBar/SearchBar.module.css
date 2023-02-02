@@ -1,28 +1,17 @@
-/* .mainContainer {
-    display: flex;
-    background-color: darkturquoise;
-    justify-content: space-around;
-    border-radius: 10px;
-    border: solid 1px black;
-    height: 3rem;
-    text-align: center;
-    padding: 1rem;
-} */
-
-.mainContainer {
+.search {
     color: rgb(196, 86, 23);
     display: flex;
-    justify-content: space-around;
-    --glow-color: rgb(226, 152, 13);
-    border: .25em solid var(--glow-color);
-    background: rgba(66, 2, 66, 0.959);
+
+    justify-content: right;
+
+
 }
 
 
 .underline {
     border-bottom: 1px solid white;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
     overflow: hidden;
 }
 
@@ -39,13 +28,13 @@
     --btn-color: rgb(35, 13, 56);
     width: 15%;
     height: 40px;
-    font-size: 25px;
-
+    border: .25em solid var(--glow-color);
+    background: linear-gradient(rgba(66, 2, 66, 0.555), rgba(78, 2, 78, 0.8));
     color: var(--glow-color);
     text-shadow: 0 0 .5em var(--glow-color);
-    /* box-shadow: 0 0 1em .25em var(--glow-color),
+    box-shadow: 0 0 1em .25em var(--glow-color),
         0 0 4em 1em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color); */
+        inset 0 0 .75em .25em var(--glow-color);
     text-decoration: none;
     transition: all 0.4s;
     border-radius: 1em;

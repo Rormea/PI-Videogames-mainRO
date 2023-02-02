@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import errorImg from "../assets/errorImg.gif"
+import style from "../Error/Error.module.css"
 
 
 
@@ -12,7 +13,7 @@ const Error = ({ gamesError }) => {
 
 
     return (
-        <div>
+        <div className={style.errorA}>
             {location.pathname !== '/home' ? (
                 <button onClick={() => {
                     history(`/home`);
@@ -21,7 +22,13 @@ const Error = ({ gamesError }) => {
                 </button>
             ) : null}
 
-            <img src={errorImg} alt='error-gif' />
+            <p className='error--message'>
+                {`Error ${gamesError?.response.status || `404`}: ${gamesError?.response.message ||
+                    `Sorry, the page you're searching for doesn't exist.`
+                    }`}
+            </p>
+
+            <img className={style.errorB} src={errorImg} alt='error-gif' />
         </div>
     );
 };

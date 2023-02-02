@@ -1,8 +1,104 @@
 .dtContainer {
-    color: black;
-    background-color: darkslategray;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.p {
+.col {
+    margin-top: 100px;
+    max-width: 800px;
+    height: auto;
+    margin: 15px;
+
+    border-radius: 15px;
+}
+
+.imgD {
+    border-radius: 10px;
+    width: 800px;
+
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.datos {
+    display: flex;
+    justify-content: left;
+    font-size: medium;
+}
+
+.datosR {
+    display: flex;
+    justify-content: left;
+    font-size: medium;
+    color: yellow;
+}
+
+
+/* .imgD {
+
+    width: 50%;
+    height: 100%;
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+    background: url("../../components/assets/fondo.jpg");
+    display: grid;
+    grid-template-columns: 1fr;
+} */
+
+.pD {
+    display: flex;
+    text-align: left;
+    font-size: medium;
+    color: white;
+}
+
+.btn_Cont {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    --glow-color: rgb(58, 3, 58);
+    --glow-spread-color: rgba(191, 123, 255, 0.568);
+    --enhanced-glow-color: rgba(231, 206, 255, 0.651);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--enhanced-glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+
     text-decoration: none;
+}
+
+.btn:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.btn:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
 }

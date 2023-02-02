@@ -3,14 +3,14 @@ import {
     GET_VIDEOGAMES, GET_VIDEOGAMEBYID, SET_ERROR,
     SET_LOADING, GET_VIDEOGAMEBYNAME, GET_GENRES,
     FILTER_GENRES, FILTER_ORIGIN, ORDER_NAME, ORDER_RATING,
-    CREATE_VIDEOGAME, GET_PLATFORM, /*ADD_FAVORITES, REMOVE_FAV*/
+    CREATE_VIDEOGAME, GET_PLATFORM, CLEAR /*ADD_FAVORITES, REMOVE_FAV*/
 } from "./actions"
 
 
 
 const initialState = {
     allVideoGames: [],
-    detail: [],
+    detail: {},
     allGenres: [],
     allPlatforms: [],
     gamesAllFEver: [],
@@ -37,7 +37,10 @@ const rootReducer = (state = initialState, action) => {
             };
 
         case GET_VIDEOGAMEBYID:
-            return { ...state, detail: action.payload };
+
+            return { ...state, detail: action.payload, isLoading: false };
+
+
 
         case GET_VIDEOGAMEBYNAME:
             return { ...state, allVideoGames: action.payload, isLoading: false, };
@@ -114,6 +117,9 @@ const rootReducer = (state = initialState, action) => {
 
         case CREATE_VIDEOGAME:
             return { ...state, isLoading: false, };
+
+        case CLEAR:
+            return { ...state, detail: {} };
 
         // case ADD_FAVORITES:
         //     const onlyFav = state.allVideoGames.filter(vg => vg.id === action.payload)

@@ -18,7 +18,7 @@ const getVgById = async (id, seeker) => {
             }
 
         );
-        return [resp]
+        return resp
     };
 
     if (seeker === "api") {
@@ -26,22 +26,22 @@ const getVgById = async (id, seeker) => {
         vgApiId = vgApiId.data;
 
         let result =
-            [
-                {
-                    id: vgApiId.id,
-                    name: vgApiId.name,
-                    description: vgApiId.description,
-                    released: vgApiId.released,
-                    rating: vgApiId.rating,
-                    background_image: vgApiId.background_image,
-                    genres: vgApiId.genres?.map(gen => {
-                        return {
-                            name: gen.name
-                        }
-                    }),
-                    platforms: vgApiId.platforms?.map((plat) => plat.platform.name),
+
+        {
+            id: vgApiId.id,
+            name: vgApiId.name,
+            description: vgApiId.description,
+            released: vgApiId.released,
+            rating: vgApiId.rating,
+            background_image: vgApiId.background_image,
+            genres: vgApiId.genres?.map(gen => {
+                return {
+                    name: gen.name
                 }
-            ]
+            }),
+            platforms: vgApiId.platforms?.map((plat) => plat.platform.name),
+        }
+
 
         return result
     }

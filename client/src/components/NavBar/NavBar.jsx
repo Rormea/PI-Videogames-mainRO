@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
         <div className={style.mainContainer}>
-            <Link to="/home">HOME</Link>
-            <Link to="/form">ADD VIDEO GAME</Link>
+            <Link className={style.options} to="/home">HOME</Link>
+            <Link className={style.options} to="/form">ADD VIDEO GAME</Link>
             {/* <Link to="/favorites">FAVORITES</Link> */}
 
 

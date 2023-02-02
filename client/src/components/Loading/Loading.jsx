@@ -9,7 +9,7 @@ const Loading = () => {
 
     return (
         <div className={style.imgLoad}>
-            <img src={loadimg} alt='loading' />
+            <img className={style.img} src={loadimg} alt='loading' />
         </div>
     );
 };
